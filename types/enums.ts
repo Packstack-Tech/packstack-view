@@ -32,7 +32,7 @@ export enum CatLevel {
   SYSTEM = "SYSTEM",
 }
 
-export const getGenderName = (gender?: Gender): string => {
+export const getGenderName = (gender?: Gender): string | undefined => {
   switch (gender) {
     case Gender.MALE:
       return "Male";
@@ -41,6 +41,6 @@ export const getGenderName = (gender?: Gender): string => {
     case Gender.UNSPECIFIED:
       return "Unspecified";
     default:
-      return "";
+      return undefined;
   }
 };

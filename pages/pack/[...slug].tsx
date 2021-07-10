@@ -4,6 +4,7 @@ import { Pane, Heading, Text, majorScale, useTheme } from "evergreen-ui";
 import { Pack, CategoryItems } from "../../types/pack";
 import { CategoryTable } from "../../components/CategoryTable";
 import { UnitSelector } from "../../components/UnitSelector";
+import { Sidebar } from "../../components/Sidebar"
 import { useCategoryItems } from "../../components/useCategoryItems";
 import { UnitSystem } from '../../types/enums'
 
@@ -16,7 +17,7 @@ function PackView(data: Pack) {
     <Pane display="flex">
       <Pane flex={1}>
         <Pane padding={majorScale(4)}>
-          <Heading size={800}>{data.title}</Heading>
+          <Heading size={800} is="h1">{data.title}</Heading>
           <Text>{data.description}</Text>
           <Pane
             display="flex"
@@ -40,7 +41,9 @@ function PackView(data: Pack) {
         minHeight="100vh"
         boxShadow={`-1px 0 0 ${theme.colors.gray100}`}
       >
-        <Pane padding={majorScale(4)}>Sidebar content</Pane>
+        <Pane padding={majorScale(4)}>
+          <Sidebar pack={data} />
+        </Pane>
       </Pane>
     </Pane>
   );

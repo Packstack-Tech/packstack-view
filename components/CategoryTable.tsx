@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Table, Pill, majorScale, useTheme } from "evergreen-ui";
+import { Table, Badge, Pill, Pane, majorScale, useTheme } from "evergreen-ui";
 import { CategoryItems } from "../types/pack";
 import { UnitSystem, TotalUnit } from "../types/enums";
 
@@ -18,6 +18,7 @@ export const CategoryTable: FC<Props> = ({ data, unit }) => {
         height={majorScale(5)}
         color={theme.colors.green800}
         backgroundColor={theme.colors.green25}
+        paddingRight={0}
       >
         <Table.TextHeaderCell>{category.name}</Table.TextHeaderCell>
         <Table.TextHeaderCell />
@@ -34,10 +35,18 @@ export const CategoryTable: FC<Props> = ({ data, unit }) => {
       <Table.Body>
         {items.map((item) => (
           <Table.Row key={item.id} height={32}>
-            <Table.TextCell>{item.name}</Table.TextCell>
+            <Table.TextCell>
+              <Pane display="inline-flex" alignItems="center">
+                <Pill color="blue" marginRight={majorScale(1)}>
+                  {parseFloat(item.packItem.quantity.toString())}
+                </Pill>
+                {` `}
+                {item.name}
+              </Pane>
+            </Table.TextCell>
             <Table.TextCell>{item.product_name}</Table.TextCell>
             <Table.TextCell textAlign="right">
-              {item.packItem.worn && <Pill color="yellow">worn</Pill>}
+              {item.packItem.worn && <Badge color="yellow">worn</Badge>}
             </Table.TextCell>
             <Table.TextCell textAlign="right">
               {item.weight} {item.weight_unit}
