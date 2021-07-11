@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import convert from "convert-units";
 import { CategoryItems } from "../types/pack";
-import { WeightUnit, UnitSystem } from "../types/enums";
+import { WeightUnit, UnitSystem, TotalUnit } from "../types/enums";
 
 function convertWeight(
   system: UnitSystem,
@@ -87,32 +87,40 @@ export const useCategoryItems = (
   return useMemo(
     () =>
       categories.map((category) => {
+        let wornWeight = 0;
         const totalWeight = category.items.reduce((acc, curr) => {
           if (!curr.weight || !curr.weight_unit) {
             return acc;
           }
+
+          let itemWeight = curr.weight;
           if (
             system === UnitSystem.IMPERIAL &&
             curr.weight_unit === WeightUnit.OUNCES
           ) {
-            return acc + convert(curr.weight).from(WeightUnit.OUNCES).to("lb");
-          }
-          if (
+            itemWeight = convert(curr.weight).from(WeightUnit.OUNCES).to("lb");
+          } else if (
             system === UnitSystem.METRIC &&
             curr.weight_unit === WeightUnit.GRAMS
           ) {
-            return (
-              acc +
-              convert(curr.weight)
-                .from(WeightUnit.GRAMS)
-                .to(WeightUnit.KILOGRAMS)
-            );
+            itemWeight = convert(curr.weight)
+              .from(WeightUnit.GRAMS)
+              .to(WeightUnit.KILOGRAMS);
           }
-          return acc + curr.weight;
+
+          if (curr.packItem.worn) {
+            wornWeight += itemWeight;
+          }
+
+          return acc + itemWeight;
         }, 0);
+
         return {
           ...category,
+          wornWeight,
+          consumable: category.category.name === "Consumables",
           totalWeight: Math.round(totalWeight * 100) / 100,
+          totalUnit: TotalUnit[system],
         };
       }),
     [categories, system]

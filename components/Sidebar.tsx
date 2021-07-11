@@ -14,14 +14,21 @@ export const Sidebar: FC<Props> = ({ pack }) => {
     : undefined;
 
   return (
-    <div>
-      <Heading size={600} is="h3" marginBottom={majorScale(2)}>
-        Trip Details
-      </Heading>
-      <DataPoint label="Season" value={pack.season} />
-      <DataPoint label="Duration" value={duration} />
-      <DataPoint label="Temperature Range" value={pack.temp_range} />
-      <DataPoint label="Gender" value={getGenderName(pack.gender)} />
-    </div>
+    <>
+      <Pane marginBottom={majorScale(2)}>
+        <Heading size={600} is="h3" marginBottom={majorScale(2)}>
+          Trip Details
+        </Heading>
+        <DataPoint label="Season" value={pack.season} />
+        <DataPoint label="Duration" value={duration} />
+        <DataPoint label="Temperature Range" value={pack.temp_range} />
+        <DataPoint label="Gender" value={getGenderName(pack.gender)} />
+      </Pane>
+      <Pane>
+        <Heading size={600} is="h3" marginBottom={majorScale(2)}>
+          Weight Breakdown
+        </Heading>
+      </Pane>
+    </>
   );
 };

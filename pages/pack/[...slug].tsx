@@ -1,23 +1,47 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { GetServerSidePropsContext } from "next";
 import { Pane, Heading, Text, majorScale, useTheme } from "evergreen-ui";
 import { Pack, CategoryItems } from "../../types/pack";
 import { CategoryTable } from "../../components/CategoryTable";
 import { UnitSelector } from "../../components/UnitSelector";
-import { Sidebar } from "../../components/Sidebar"
+import { Sidebar } from "../../components/Sidebar";
 import { useCategoryItems } from "../../components/useCategoryItems";
-import { UnitSystem } from '../../types/enums'
+import { UnitSystem } from "../../types/enums";
 
 function PackView(data: Pack) {
   const theme: any = useTheme();
   const [unit, setUnit] = useState<UnitSystem>(UnitSystem.METRIC);
   const categoryItems = useCategoryItems(unit, data.byCategory);
 
+  const categoryTotals = useMemo(() => {
+    return categoryItems.map(
+      ({
+        id,
+        category: { name },
+        consumable,
+        wornWeight,
+        totalWeight,
+        totalUnit,
+      }) => ({
+        id,
+        name,
+        consumable,
+        wornWeight,
+        totalWeight,
+        totalUnit,
+      })
+    );
+  }, [categoryItems]);
+
+  console.log(categoryTotals);
+
   return (
     <Pane display="flex">
       <Pane flex={1}>
         <Pane padding={majorScale(4)}>
-          <Heading size={800} is="h1">{data.title}</Heading>
+          <Heading size={800} is="h1">
+            {data.title}
+          </Heading>
           <Text>{data.description}</Text>
           <Pane
             display="flex"

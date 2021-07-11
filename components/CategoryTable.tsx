@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Table, Badge, Pill, Pane, majorScale, useTheme } from "evergreen-ui";
 import { CategoryItems } from "../types/pack";
-import { UnitSystem, TotalUnit } from "../types/enums";
+import { UnitSystem } from "../types/enums";
 
 type Props = {
   data: CategoryItems;
@@ -29,7 +29,7 @@ export const CategoryTable: FC<Props> = ({ data, unit }) => {
           flexGrow={0}
           textAlign="right"
         >
-          {data.totalWeight} {TotalUnit[unit]}
+          {data.totalWeight} {data.totalUnit}
         </Table.TextHeaderCell>
       </Table.Head>
       <Table.Body>

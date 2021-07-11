@@ -19,7 +19,8 @@ export type CategoryItems = {
     id: number,
     category: Category,
     items: PackItem[],
-    totalWeight?: number
+    totalWeight?: number,
+    totalUnit?: string
   }
 
 export interface Pack extends BasePack {
