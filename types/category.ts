@@ -12,17 +12,11 @@ export interface CategoryItems extends Category {
   items: (Item | PackItem)[];
 }
 
-export interface CategoryItemSpecs extends CategoryItems, AggregateWeightProps {
-  color: string;
-}
-
-export interface WeightProps {
-  value: number;
-  label: string;
-}
-
-export interface AggregateWeightProps {
-  included: WeightProps;
-  excluded: WeightProps;
-  total: WeightProps;
+export interface CategoryStat {
+  id: number;
+  name: string;
+  consumable: boolean;
+  wornWeight: number
+  totalWeight: number
+  totalUnit: string
 }

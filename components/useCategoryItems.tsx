@@ -108,11 +108,13 @@ export const useCategoryItems = (
               .to(WeightUnit.KILOGRAMS);
           }
 
+          const quantityWeight = itemWeight * curr.packItem.quantity;
+
           if (curr.packItem.worn) {
-            wornWeight += itemWeight;
+            wornWeight += quantityWeight;
           }
 
-          return acc + itemWeight;
+          return acc + quantityWeight;
         }, 0);
 
         return {

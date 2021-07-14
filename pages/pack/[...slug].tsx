@@ -13,7 +13,7 @@ function PackView(data: Pack) {
   const [unit, setUnit] = useState<UnitSystem>(UnitSystem.METRIC);
   const categoryItems = useCategoryItems(unit, data.byCategory);
 
-  const categoryTotals = useMemo(() => {
+  const categoryStats = useMemo(() => {
     return categoryItems.map(
       ({
         id,
@@ -33,7 +33,10 @@ function PackView(data: Pack) {
     );
   }, [categoryItems]);
 
-  console.log(categoryTotals);
+  const chartData = [
+    ["Category", "Weight"],
+    ...categoryStats.map((stat) => [stat.name, stat.totalWeight]),
+  ];
 
   return (
     <Pane display="flex">
@@ -42,7 +45,9 @@ function PackView(data: Pack) {
           <Heading size={800} is="h1">
             {data.title}
           </Heading>
-          <Text>{data.description}</Text>
+          <Pane>
+            <Text>{data.description}</Text>
+          </Pane>
           <Pane
             display="flex"
             justifyContent="space-between"
@@ -66,7 +71,7 @@ function PackView(data: Pack) {
         boxShadow={`-1px 0 0 ${theme.colors.gray100}`}
       >
         <Pane padding={majorScale(4)}>
-          <Sidebar pack={data} />
+          <Sidebar pack={data} categoryStats={categoryStats} systemUnit={unit} />
         </Pane>
       </Pane>
     </Pane>
