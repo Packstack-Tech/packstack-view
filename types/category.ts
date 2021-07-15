@@ -16,7 +16,8 @@ export interface CategoryStat {
   id: number;
   name: string;
   consumable: boolean;
-  wornWeight: number
-  totalWeight: number
-  totalUnit: string
+  wornWeight: number;
+  totalWeight: number;
+  totalUnit: string;
+  color: string;
 }

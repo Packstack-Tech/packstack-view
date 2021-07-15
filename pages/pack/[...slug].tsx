@@ -7,6 +7,7 @@ import { UnitSelector } from "../../components/UnitSelector";
 import { Sidebar } from "../../components/Sidebar";
 import { useCategoryItems } from "../../components/useCategoryItems";
 import { UnitSystem } from "../../types/enums";
+import { categoryColors } from "../../styles/categoryColors";
 
 function PackView(data: Pack) {
   const theme: any = useTheme();
@@ -14,29 +15,30 @@ function PackView(data: Pack) {
   const categoryItems = useCategoryItems(unit, data.byCategory);
 
   const categoryStats = useMemo(() => {
-    return categoryItems.map(
-      ({
-        id,
-        category: { name },
-        consumable,
-        wornWeight,
-        totalWeight,
-        totalUnit,
-      }) => ({
-        id,
-        name,
-        consumable,
-        wornWeight,
-        totalWeight,
-        totalUnit,
-      })
-    );
+    return categoryItems
+      .map(
+        (
+          {
+            id,
+            category: { name },
+            consumable,
+            wornWeight,
+            totalWeight,
+            totalUnit,
+          },
+          i
+        ) => ({
+          id,
+          name,
+          consumable,
+          wornWeight,
+          totalWeight,
+          totalUnit,
+          color: categoryColors[i],
+        })
+      )
+      .sort((a, b) => b.totalWeight - a.totalWeight);
   }, [categoryItems]);
-
-  const chartData = [
-    ["Category", "Weight"],
-    ...categoryStats.map((stat) => [stat.name, stat.totalWeight]),
-  ];
 
   return (
     <Pane display="flex">
@@ -71,7 +73,11 @@ function PackView(data: Pack) {
         boxShadow={`-1px 0 0 ${theme.colors.gray100}`}
       >
         <Pane padding={majorScale(4)}>
-          <Sidebar pack={data} categoryStats={categoryStats} systemUnit={unit} />
+          <Sidebar
+            pack={data}
+            categoryStats={categoryStats}
+            systemUnit={unit}
+          />
         </Pane>
       </Pane>
     </Pane>

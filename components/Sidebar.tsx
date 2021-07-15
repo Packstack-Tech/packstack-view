@@ -22,8 +22,7 @@ export const Sidebar: FC<Props> = ({ pack, categoryStats, systemUnit }) => {
 
   const chartLabels = categoryStats.map(({ name }) => name);
   const chartData = categoryStats.map(({ totalWeight }) => totalWeight);
-
-  // TODO proper category colors
+  const chartBgColors = categoryStats.map(({ color }) => color);
 
   return (
     <>
@@ -41,13 +40,18 @@ export const Sidebar: FC<Props> = ({ pack, categoryStats, systemUnit }) => {
           <Heading size={600} is="h3" marginBottom={majorScale(2)}>
             Breakdown
           </Heading>
-          <Button size="small" onClick={() => setModalOpen(!modalOpen)}>
+          <Button size="small" onClick={() => setModalOpen(true)}>
             View Chart
           </Button>
         </Pane>
         <WeightBreakdown categoryStats={categoryStats} />
       </Pane>
-      <Dialog isShown={modalOpen} title="Category Breakdown" hasFooter={false}>
+      <Dialog
+        isShown={modalOpen}
+        onCloseComplete={() => setModalOpen(false)}
+        title="Category Breakdown"
+        hasFooter={false}
+      >
         <Doughnut
           type="doughnut"
           plugins={[ChartDataLabels]}
@@ -57,13 +61,7 @@ export const Sidebar: FC<Props> = ({ pack, categoryStats, systemUnit }) => {
               {
                 label: "Weight breakdown",
                 data: chartData,
-                backgroundColor: [
-                  "rgb(255, 99, 132)",
-                  "rgb(75, 192, 192)",
-                  "rgb(255, 205, 86)",
-                  "rgb(201, 203, 207)",
-                  "rgb(54, 162, 235)",
-                ],
+                backgroundColor: chartBgColors,
               },
             ],
           }}

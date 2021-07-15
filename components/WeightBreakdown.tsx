@@ -11,10 +11,11 @@ interface RowProps {
   weight: number;
   unit: string;
   bold?: boolean;
+  color?: string;
   highlight?: boolean;
 }
 
-const Row: FC<RowProps> = ({ label, weight, unit, bold, highlight }) => (
+const Row: FC<RowProps> = ({ label, weight, unit, color, bold, highlight }) => (
   <Pane
     display="flex"
     justifyContent="space-between"
@@ -23,9 +24,20 @@ const Row: FC<RowProps> = ({ label, weight, unit, bold, highlight }) => (
     paddingX="4px"
     backgroundColor={highlight ? "#FAFBFF" : undefined}
   >
-    <Text fontWeight={bold ? 700 : 400} size={300}>
-      {label}
-    </Text>
+    <Pane display="inline-flex" alignItems="center">
+      {color && (
+        <Pane
+          height={12}
+          width={12}
+          backgroundColor={color}
+          borderRadius={4}
+          marginRight={8}
+        />
+      )}
+      <Text fontWeight={bold ? 700 : 400} size={300}>
+        {label}
+      </Text>
+    </Pane>
     <Text fontWeight={bold ? 700 : 400} size={300}>
       {weight.toFixed(2)} {unit}
     </Text>
@@ -47,15 +59,13 @@ export const WeightBreakdown: FC<Props> = ({ categoryStats }) => {
   }, 0);
 
   const baseWeight = totalWeight - (consumableWeight + wornWeight);
-  const sortedByWeight = [...categoryStats].sort(
-    (a, b) => b.totalWeight - a.totalWeight
-  );
 
   return (
     <Pane>
-      {sortedByWeight.map((stat) => (
+      {categoryStats.map((stat) => (
         <Row
           key={stat.id}
+          color={stat.color}
           label={stat.name}
           weight={stat.totalWeight}
           unit={stat.totalUnit}
