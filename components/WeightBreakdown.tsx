@@ -45,7 +45,7 @@ const Row: FC<RowProps> = ({ label, weight, unit, color, bold, highlight }) => (
 );
 
 export const WeightBreakdown: FC<Props> = ({ categoryStats }) => {
-  const unit = categoryStats[0].totalUnit;
+  const unit = categoryStats[0]?.totalUnit || 'kg';
   const totalWeight = categoryStats.reduce((acc, curr) => {
     return acc + curr.totalWeight;
   }, 0);
