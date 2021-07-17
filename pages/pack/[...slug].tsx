@@ -1,6 +1,7 @@
 import { useState, useMemo } from "react";
 import { GetServerSidePropsContext } from "next";
 import Image from "next/image";
+import Head from "next/head";
 import { Pane, Heading, Text, majorScale, useTheme } from "evergreen-ui";
 import Logo from "../../public/packstack_logo_sq.png";
 import { Pack, CategoryItems } from "../../types/pack";
@@ -42,56 +43,70 @@ function PackView(data: Pack) {
       .sort((a, b) => b.totalWeight - a.totalWeight);
   }, [categoryItems]);
 
+  const metaDescription = data.description
+    ? data.description.length > 160
+      ? data.description.substring(0, 157) + "..."
+      : data.description
+    : `Packing list for ${data.title}`;
+
   return (
-    <Pane display="flex">
-      <Pane flex={1}>
-        <Pane
-          paddingY={majorScale(2)}
-          paddingX={majorScale(4)}
-          boxShadow={`0 1px 0 ${theme.colors.gray100}`}
-        >
-          <Pane width={140}>
-            <Image src={Logo} alt="Packstack logo" priority quality={100} />
-          </Pane>
-        </Pane>
-        <Pane paddingY={majorScale(2)} paddingX={majorScale(4)}>
-          <Heading size={800} is="h1">
-            {data.title}
-          </Heading>
-          <Pane>
-            <Text>{data.description}</Text>
-          </Pane>
+    <>
+      <Head>
+        <title>{data.title} - packing list | Packstack</title>
+        <meta name="description" content={metaDescription} />
+      </Head>
+      <Pane display="flex">
+        <Pane flex={1}>
           <Pane
-            display="flex"
-            justifyContent="space-between"
-            alignItems="flex-end"
+            paddingY={majorScale(2)}
+            paddingX={majorScale(4)}
+            boxShadow={`0 1px 0 ${theme.colors.gray100}`}
           >
-            <Heading size={600} paddingBottom={majorScale(3)}>
-              Packing List
+            <Pane width={140}>
+              <a href="https://packstack.io">
+                <Image src={Logo} alt="Packstack logo" priority quality={100} />
+              </a>
+            </Pane>
+          </Pane>
+          <Pane paddingY={majorScale(2)} paddingX={majorScale(4)}>
+            <Heading size={800} is="h1">
+              {data.title}
             </Heading>
-            <UnitSelector selected={unit} onChange={(v) => setUnit(v)} />
+            <Pane>
+              <Text>{data.description}</Text>
+            </Pane>
+            <Pane
+              display="flex"
+              justifyContent="space-between"
+              alignItems="flex-end"
+            >
+              <Heading size={600} paddingBottom={majorScale(3)}>
+                Packing List
+              </Heading>
+              <UnitSelector selected={unit} onChange={(v) => setUnit(v)} />
+            </Pane>
+            <Pane>
+              {categoryItems.map((category) => (
+                <CategoryTable data={category} key={category.id} unit={unit} />
+              ))}
+            </Pane>
           </Pane>
-          <Pane>
-            {categoryItems.map((category) => (
-              <CategoryTable data={category} key={category.id} unit={unit} />
-            ))}
+        </Pane>
+        <Pane
+          width={majorScale(40)}
+          minHeight="100vh"
+          boxShadow={`-1px 0 0 ${theme.colors.gray100}`}
+        >
+          <Pane padding={majorScale(4)}>
+            <Sidebar
+              pack={data}
+              categoryStats={categoryStats}
+              systemUnit={unit}
+            />
           </Pane>
         </Pane>
       </Pane>
-      <Pane
-        width={majorScale(40)}
-        minHeight="100vh"
-        boxShadow={`-1px 0 0 ${theme.colors.gray100}`}
-      >
-        <Pane padding={majorScale(4)}>
-          <Sidebar
-            pack={data}
-            categoryStats={categoryStats}
-            systemUnit={unit}
-          />
-        </Pane>
-      </Pane>
-    </Pane>
+    </>
   );
 }
 
