@@ -2,7 +2,7 @@ import { useState, useMemo } from "react";
 import { GetServerSidePropsContext } from "next";
 import Image from "next/image";
 import { Pane, Heading, Text, majorScale, useTheme } from "evergreen-ui";
-import Logo from "../../public/packstack_logo.png";
+import Logo from "../../public/packstack_logo_sq.png";
 import { Pack, CategoryItems } from "../../types/pack";
 import { CategoryTable } from "../../components/CategoryTable";
 import { UnitSelector } from "../../components/UnitSelector";
@@ -45,7 +45,11 @@ function PackView(data: Pack) {
   return (
     <Pane display="flex">
       <Pane flex={1}>
-        <Pane padding={majorScale(2)} boxShadow={`0 1px 0 ${theme.colors.gray100}`}>
+        <Pane
+          paddingY={majorScale(2)}
+          paddingX={majorScale(4)}
+          boxShadow={`0 1px 0 ${theme.colors.gray100}`}
+        >
           <Pane width={140}>
             <Image src={Logo} alt="Packstack logo" priority quality={100} />
           </Pane>
