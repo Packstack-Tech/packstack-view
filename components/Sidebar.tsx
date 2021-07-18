@@ -81,13 +81,13 @@ export const Sidebar: FC<Props> = ({ pack, categoryStats, systemUnit }) => {
                   left: 4,
                 },
                 borderRadius: 2,
-                formatter: (value, context) =>
+                formatter: (value: any, context: any) =>
                   context.chart.data.labels[context.dataIndex],
               },
               tooltip: {
                 yAlign: "bottom",
                 callbacks: {
-                  label: (context) =>
+                  label: (context: any) =>
                     ` ${context.formattedValue} ${TotalUnit[systemUnit]}`,
                 },
               },
