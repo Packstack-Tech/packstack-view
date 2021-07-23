@@ -42,9 +42,70 @@ export default function Home() {
               your gear and start building your packing list. We’ll give you a
               weight breakdown so you can fine-tune your loadout.
             </p>
+            <div className={styles.CTABtns}>
+              <a
+                href="#"
+                className={`${styles.Button} ${styles.BtnOutline} ${styles.BtnLarge}`}
+              >
+                Start Packing
+              </a>
+              <a
+                href="#"
+                className={`${styles.Button}`}
+                style={{ textDecoration: "underline" }}
+              >
+                View sample pack
+              </a>
+            </div>
           </div>
         </main>
       </div>
+
+      <div className={styles.Columns}>
+        <div className={styles.Features}>
+          <div className={`${styles.containerHalf} ${styles.Left}`}>
+            <h2>Features</h2>
+            <ul>
+              <li>Create an unlimited number of packs</li>
+              <li>Manage your entire gear inventory</li>
+              <li>Assign weights in either metric or imperial units</li>
+              <li>Use predefined categories or create your own</li>
+              <li>Generate a shareable packing list url</li>
+              <li>View a breakdown of weight by category</li>
+              <li>Add notes about your expedition</li>
+              <li>Mark items as worn or consumable</li>
+              <li>Experiment with different pack configurations</li>
+              <li>Plus, many more features in development</li>
+            </ul>
+          </div>
+        </div>
+        <div className={styles.FeaturesBg}></div>
+      </div>
+
+      <div className={styles.Columns}>
+        <div className={styles.CollaborativeBg}></div>
+        <div className={styles.Collaborative}>
+          <div className={`${styles.containerHalf} ${styles.Right}`}>
+            <h2>Collaborative by design</h2>
+            <p>
+              Packstack’s core application is open source, which means anyone
+              can contribute to the code base and make the project better for
+              everyone.
+            </p>
+            <p>
+              We also believe that experienced backpackers should share their
+              knowledge. We encourage our users to make their packs public so
+              that other backpackers can be better informed while planning their
+              expeditions.
+            </p>
+            <a href="#">Check out the open source project</a>
+          </div>
+        </div>
+      </div>
+
+      <footer className={styles.Footer}>
+        <div className={styles.container}>heya</div>
+      </footer>
     </div>
   );
 }

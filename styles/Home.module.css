@@ -50,6 +50,29 @@
   margin: 0 auto;
 }
 
+.containerHalf {
+  max-width: 510px;
+  width: 100%;
+}
+
+.containerHalf.Left {
+  padding-left: 16px;
+  padding-right: 10%;
+  margin-left: auto;
+}
+
+.containerHalf.Right {
+  padding-right: 16px;
+  padding-left: 10%;
+  margin-right: auto;
+}
+
+.CTABtns {
+  display: flex;
+  align-items: baseline;
+  margin-top: 24px;
+}
+
 .BtnGroup {
   display: flex;
   align-items: center;
@@ -74,7 +97,66 @@
   background: rgba(126, 155, 200, 0.08);
 }
 
+.Button.BtnLarge {
+  padding: 12px 56px;
+  font-size: 20px;
+  margin-right: 16px;
+}
+
 .Button:hover,
 .Button:active {
   background: rgba(126, 155, 200, 0.35);
+}
+
+.Columns {
+  display: flex;
+  color: #fff;
+}
+
+.Columns > div {
+  width: 50%;
+  padding: 32px 0;
+}
+
+.Columns h2 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+}
+
+.Features {
+  background-color: #743a3d;
+}
+
+.Features ul {
+  line-height: 2rem;
+  padding-left: 18px;
+}
+
+.FeaturesBg {
+  background-image: url("/planning.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.Collaborative {
+  background-color: #404a56;
+}
+
+.Collaborative p {
+  line-height: 1.65rem;
+}
+
+.CollaborativeBg {
+  background-image: url("/hiking.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 50%;
+}
+
+.Footer {
+  padding: 24px 0;
+  background-color: #1D3D6A;
 }
