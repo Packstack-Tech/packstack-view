@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
 import Logo from "../public/packstack_logo_white.png";
 import styles from "../styles/Home.module.css";
 
@@ -23,10 +24,13 @@ export default function Home() {
                 <Image src={Logo} alt="Packstack logo" />
               </div>
               <div className={styles.BtnGroup}>
-                <a href="#" className={styles.Button}>
+                <a href="https://app.packstack.io" className={styles.Button}>
                   Login
                 </a>
-                <a href="#" className={`${styles.Button} ${styles.BtnOutline}`}>
+                <a
+                  href="https://app.packstack.io/register"
+                  className={`${styles.Button} ${styles.BtnOutline}`}
+                >
                   Sign Up
                 </a>
               </div>
@@ -44,18 +48,19 @@ export default function Home() {
             </p>
             <div className={styles.CTABtns}>
               <a
-                href="#"
+                href="https://app.packstack.io"
                 className={`${styles.Button} ${styles.BtnOutline} ${styles.BtnLarge}`}
               >
                 Start Packing
               </a>
-              <a
-                href="#"
-                className={`${styles.Button}`}
-                style={{ textDecoration: "underline" }}
-              >
-                View sample pack
-              </a>
+              <Link href="/pack/1659/appalachian-trail">
+                <a
+                  className={`${styles.Button}`}
+                  style={{ textDecoration: "underline" }}
+                >
+                  View sample pack
+                </a>
+              </Link>
             </div>
           </div>
         </main>
@@ -98,13 +103,37 @@ export default function Home() {
               that other backpackers can be better informed while planning their
               expeditions.
             </p>
-            <a href="#">Check out the open source project</a>
+            <a
+              href="https://github.com/maplethorpej/packstack"
+              style={{ textDecoration: "underline" }}
+            >
+              Check out the open source project
+            </a>
           </div>
         </div>
       </div>
 
       <footer className={styles.Footer}>
-        <div className={styles.container}>heya</div>
+        <div className={styles.container}>
+          <div className={styles.FooterInner}>
+            <div>
+              <p>Packstack © {new Date().getFullYear()}</p>
+            </div>
+            <div>
+              <div className={styles.BtnGroup}>
+                <a href="https://app.packstack.io" className={styles.Button}>
+                  Login
+                </a>
+                <a
+                  href="https://app.packstack.io/register"
+                  className={`${styles.Button} ${styles.BtnOutline}`}
+                >
+                  Sign Up
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
       </footer>
     </div>
   );

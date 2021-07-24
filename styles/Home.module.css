@@ -160,3 +160,57 @@
   padding: 24px 0;
   background-color: #1D3D6A;
 }
+
+.FooterInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 800px) {
+  .Hero h1 {
+    max-width: 100%;
+    font-size: 32px;
+    line-height: 2.5rem;
+  }
+
+  .Columns {
+    flex-direction: column;
+  }
+  
+  .Columns > div {
+    width: 100%;
+  }
+
+  .FeaturesBg {
+    display: none;
+  }
+
+  .CollaborativeBg {
+    display: none;
+  }
+
+  .containerHalf {
+    max-width: 100%;
+  }
+
+  .containerHalf.Left {
+    padding: 0 20px;
+  }
+  
+  .containerHalf.Right {
+    padding: 0 20px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .CTABtns {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .CTABtns .Button.BtnLarge {
+    font-size: 18px;
+    margin-right: 0
+  }
+}
