@@ -124,7 +124,7 @@ export async function getServerSideProps({
 
   const id = slug[0];
   try {
-    const res = await fetch(`https://packstack.io/api/v1/pack/${id}`);
+    const res = await fetch(`https://api-v1.packstack.io/api/v1/pack/${id}`);
     const data: Pack = await res.json();
 
     // API needs to be refactored to clean this up
