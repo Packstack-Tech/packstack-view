@@ -1,5 +1,0 @@
-#[[redirects]]
-#from = "/*"
-#to = "/pack/:splat"
-#status = 301
-#force = true
