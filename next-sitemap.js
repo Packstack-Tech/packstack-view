@@ -4,7 +4,7 @@ module.exports = {
     exclude: ['/server-sitemap.xml'],
     robotsTxtOptions: {
       additionalSitemaps: [
-        'https://example.com/server-sitemap.xml',
+        'https://packstack.io/server-sitemap.xml',
       ],
     },
   }
