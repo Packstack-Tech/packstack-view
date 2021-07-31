@@ -1,0 +1,4 @@
+# add static pages above wildcard
+
+# wildcard redirect for old pack view urls
+/*  /pack/:splat
