@@ -3,7 +3,7 @@ module.exports = {
   async redirects() {
     return [
       {
-        source: '/:slug(\d{1,})/:path*',
+        source: '/:slug(\\d{1,})/:path*',
         destination: '/pack/:slug*/:path*', // Matched parameters can be used in the destination
         permanent: true,
       },
