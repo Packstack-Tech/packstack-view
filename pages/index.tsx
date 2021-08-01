@@ -13,7 +13,7 @@ export default function Home() {
           name="description"
           content="Create and share packing lists for backpacking, camping or anything else."
         />
-        <link rel="icon" href="/favicon.png" />
+        <link rel="icon" href="favicon.png" />
       </Head>
 
       <div className={styles.Splash}>

@@ -54,7 +54,7 @@ function PackView(data: Pack) {
       <Head>
         <title>{data.title} - packing list | Packstack</title>
         <meta name="description" content={metaDescription} />
-        <link rel="icon" href="/favicon.png" />
+        <link rel="icon" href="favicon.png" />
       </Head>
       <Pane display="flex">
         <Pane flex={1}>
