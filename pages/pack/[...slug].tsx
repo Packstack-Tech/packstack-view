@@ -3,7 +3,7 @@ import { GetServerSidePropsContext } from "next";
 import Image from "next/image";
 import Head from "next/head";
 import { Pane, Heading, Text, majorScale, useTheme } from "evergreen-ui";
-import Logo from "../../public/packstack_logo_horizontal_blue.png";
+import Logo from "../../public/packstack_logo_horizontal_blue_sm.png";
 import { Pack, CategoryItems } from "../../types/pack";
 import { CategoryTable } from "../../components/CategoryTable";
 import { UnitSelector } from "../../components/UnitSelector";
@@ -65,7 +65,7 @@ function PackView(data: Pack) {
           >
             <Pane width={112}>
               <a href="https://packstack.io">
-                <Image src={Logo} alt="Packstack logo" priority quality={100} />
+                <Image src={Logo} alt="Packstack logo" unoptimized />
               </a>
             </Pane>
           </Pane>

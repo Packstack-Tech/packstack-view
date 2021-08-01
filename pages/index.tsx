@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import Logo from "../public/packstack_logo_white.png";
+import Logo from "../public/packstack_logo_white_sm.png";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
@@ -21,7 +21,7 @@ export default function Home() {
           <div className={styles.container}>
             <div className={styles.HeaderInner}>
               <div className={styles.Logo}>
-                <Image src={Logo} alt="Packstack logo" />
+                <Image src={Logo} alt="Packstack logo" unoptimized />
               </div>
               <div className={styles.BtnGroup}>
                 <a href="https://app.packstack.io" className={styles.Button}>
