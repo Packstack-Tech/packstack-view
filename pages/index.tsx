@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>Packstack | Backpacking list creator</title>
+        <title>Packstack | Backpacking packing lists</title>
         <meta
           name="description"
           content="Create and share packing lists for backpacking, camping or anything else."
