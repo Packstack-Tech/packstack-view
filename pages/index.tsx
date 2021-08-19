@@ -45,7 +45,7 @@ export default function Home() {
             <p>
               Packstack makes it easy to plan your next adventure. Simply add
               your gear and start building your packing list. We’ll give you a
-              weight breakdown so you can fine-tune your loadout.
+              weight breakdown so you can fine-tune your pack.
             </p>
             <div className={styles.CTABtns}>
               <a
