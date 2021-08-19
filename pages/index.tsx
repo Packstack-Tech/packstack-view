@@ -14,6 +14,7 @@ export default function Home() {
           content="Create and share packing lists for backpacking, camping or anything else."
         />
         <link rel="icon" href="/static/favicon.png" />
+        <link rel="apple-touch-icon" href="/static/favicon.png" />
       </Head>
 
       <div className={styles.Splash}>
