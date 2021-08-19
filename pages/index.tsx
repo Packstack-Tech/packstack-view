@@ -104,7 +104,7 @@ export default function Home() {
               expeditions.
             </p>
             <a
-              href="https://github.com/maplethorpej/packstack"
+              href="https://github.com/Packstack-Tech"
               style={{ textDecoration: "underline" }}
             >
               Check out the open source project
