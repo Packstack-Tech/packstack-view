@@ -7,7 +7,7 @@ interface Url {
 }
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const urls = await fetch("https://api-v1.packstack.io/api/v1/pack/public");
+  const urls = await fetch(`${process.env.API_URL}/api/v1/pack/public`);
   const data = await urls.json();
 
   const fields = data.map(({ loc, lastmod }: Url) => ({

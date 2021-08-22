@@ -30,7 +30,11 @@ export interface Pack extends BasePack {
   userId: number;
   items: PackItem[];
   user: Pick<User, "id" | "username">;
-  byCategory: CategoryItems[]
+}
+
+export interface PackData {
+  pack: Pack;
+  categories: CategoryItems[]
 }
 
 export type UpdatePack = Omit<BasePack, "title"> & {
