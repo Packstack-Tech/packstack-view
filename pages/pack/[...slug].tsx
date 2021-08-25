@@ -11,6 +11,7 @@ import { Sidebar } from "../../components/Sidebar";
 import { useCategoryItems } from "../../components/useCategoryItems";
 import { UnitSystem } from "../../types/enums";
 import { categoryColors } from "../../styles/categoryColors";
+import styles from "../../styles/PackView.module.scss";
 
 function PackView({ pack, categories }: PackData) {
   const theme: any = useTheme();
@@ -56,7 +57,7 @@ function PackView({ pack, categories }: PackData) {
         <meta name="description" content={metaDescription} />
         <link rel="icon" href="/static/favicon.png" />
       </Head>
-      <Pane display="flex">
+      <Pane className={styles.PageContainer}>
         <Pane flex={1}>
           <Pane
             paddingY={majorScale(2)}
@@ -80,6 +81,7 @@ function PackView({ pack, categories }: PackData) {
               display="flex"
               justifyContent="space-between"
               alignItems="flex-end"
+              marginTop={majorScale(2)}
             >
               <Heading size={600} paddingBottom={majorScale(3)}>
                 Packing List
@@ -88,15 +90,13 @@ function PackView({ pack, categories }: PackData) {
             </Pane>
             <Pane>
               {categoryItems.map((category) => (
-                <CategoryTable data={category} key={category.id} unit={unit} />
+                <CategoryTable key={category.id} data={category} />
               ))}
             </Pane>
           </Pane>
         </Pane>
         <Pane
-          width={majorScale(40)}
-          minHeight="100vh"
-          boxShadow={`-1px 0 0 ${theme.colors.gray100}`}
+          className={styles.Sidebar}
         >
           <Pane padding={majorScale(4)}>
             <Sidebar
