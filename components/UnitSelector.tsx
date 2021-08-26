@@ -21,7 +21,7 @@ const unitOptions: { value: UnitSystem; label: string }[] = [
 export const UnitSelector: FC<Props> = ({ selected, onChange }) => {
   return (
     <SelectField
-      label="Unit system"
+      hint="Unit system"
       value={selected}
       onChange={(v) => onChange(v.target.value)}
       width={majorScale(16)}
