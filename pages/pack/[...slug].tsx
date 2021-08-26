@@ -2,7 +2,14 @@ import { useState, useMemo } from "react";
 import { GetServerSidePropsContext } from "next";
 import Image from "next/image";
 import Head from "next/head";
-import { Pane, Heading, Text, majorScale, useTheme } from "evergreen-ui";
+import {
+  Pane,
+  Heading,
+  Text,
+  Switch,
+  majorScale,
+  useTheme,
+} from "evergreen-ui";
 import Logo from "../../public/packstack_logo_horizontal_blue_sm.png";
 import { PackData } from "../../types/pack";
 import { CategoryTable } from "../../components/CategoryTable";
@@ -15,6 +22,7 @@ import styles from "../../styles/PackView.module.scss";
 
 function PackView({ pack, categories }: PackData) {
   const theme: any = useTheme();
+  const [compact, setCompact] = useState(false);
   const [unit, setUnit] = useState<UnitSystem>(UnitSystem.METRIC);
   const categoryItems = useCategoryItems(unit, categories);
 
@@ -80,24 +88,35 @@ function PackView({ pack, categories }: PackData) {
             <Pane
               display="flex"
               justifyContent="space-between"
-              alignItems="flex-end"
+              alignItems="center"
               marginTop={majorScale(2)}
+              marginBottom={majorScale(3)}
             >
-              <Heading size={600} paddingBottom={majorScale(3)}>
-                Packing List
-              </Heading>
-              <UnitSelector selected={unit} onChange={(v) => setUnit(v)} />
+              <Heading size={600}>Packing List</Heading>
+              <Pane display="flex" alignItems="center">
+                <Pane
+                  display="inline-flex"
+                  alignItems="center"
+                  marginRight={16}
+                >
+                  <Switch
+                    checked={compact}
+                    onChange={(e) => setCompact(e.target.checked)}
+                    marginRight={8}
+                  />
+                  <Text>Compact</Text>
+                </Pane>
+                <UnitSelector selected={unit} onChange={(v) => setUnit(v)} />
+              </Pane>
             </Pane>
             <Pane>
               {categoryItems.map((category) => (
-                <CategoryTable key={category.id} data={category} />
+                <CategoryTable key={category.id} data={category} compact={compact} />
               ))}
             </Pane>
           </Pane>
         </Pane>
-        <Pane
-          className={styles.Sidebar}
-        >
+        <Pane className={styles.Sidebar}>
           <Pane padding={majorScale(4)}>
             <Sidebar
               pack={pack}

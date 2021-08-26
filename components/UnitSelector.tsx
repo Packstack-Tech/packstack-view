@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { SelectField, majorScale } from "evergreen-ui";
+import { Select, majorScale } from "evergreen-ui";
 import { UnitSystem } from "../types/enums";
 
 interface Props {
@@ -20,21 +20,20 @@ const unitOptions: { value: UnitSystem; label: string }[] = [
 
 export const UnitSelector: FC<Props> = ({ selected, onChange }) => {
   return (
-    <SelectField
-      hint="Unit system"
+    <Select
       value={selected}
       onChange={(v) => onChange(v.target.value)}
       width={majorScale(16)}
+      marginBottom={0}
     >
       {unitOptions.map((unit) => (
         <option
           value={unit.value}
-          // selected={unit.value === selected}
           key={unit.value}
         >
           {unit.label}
         </option>
       ))}
-    </SelectField>
+    </Select>
   );
 };

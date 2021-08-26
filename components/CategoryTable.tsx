@@ -4,9 +4,10 @@ import styles from "./CategoryTable.module.scss";
 
 type Props = {
   data: CategoryItems;
+  compact: boolean;
 };
 
-export const CategoryTable: FC<Props> = ({ data }) => {
+export const CategoryTable: FC<Props> = ({ data, compact }) => {
   const { category, items } = data;
 
   return (
@@ -19,7 +20,10 @@ export const CategoryTable: FC<Props> = ({ data }) => {
       </div>
       <div className={styles.ItemsTable}>
         {items.map((item) => (
-          <div key={item.id} className={styles.ItemContainer}>
+          <div
+            key={item.id}
+            className={`${styles.ItemContainer} ${compact && styles.compact}`}
+          >
             <div className={styles.ItemRow}>
               <div className={styles.ItemQuantity}>
                 <div className={styles.Quantity}>
