@@ -1,59 +1,57 @@
 import { FC } from "react";
-import { Table, Badge, Pill, Pane, majorScale, useTheme } from "evergreen-ui";
 import { CategoryItems } from "../types/pack";
-import { UnitSystem } from "../types/enums";
+import styles from "./CategoryTable.module.scss";
 
 type Props = {
   data: CategoryItems;
-  unit: UnitSystem;
 };
 
-export const CategoryTable: FC<Props> = ({ data, unit }) => {
-  const theme: any = useTheme();
+export const CategoryTable: FC<Props> = ({ data }) => {
   const { category, items } = data;
 
   return (
-    <Table marginBottom={majorScale(2)}>
-      <Table.Head
-        height={majorScale(5)}
-        color={theme.colors.green800}
-        backgroundColor={theme.colors.green25}
-        paddingRight={0}
-      >
-        <Table.TextHeaderCell>{category.name}</Table.TextHeaderCell>
-        <Table.TextHeaderCell />
-        <Table.TextHeaderCell />
-        <Table.TextHeaderCell
-          flexBasis={majorScale(10)}
-          flexShrink={0}
-          flexGrow={0}
-          textAlign="right"
-        >
+    <div className={styles.CategoryTable}>
+      <div className={styles.CategoryHeader}>
+        <h4>{category.name}</h4>
+        <div className={styles.totalWeight}>
           {data.totalWeight} {data.totalUnit}
-        </Table.TextHeaderCell>
-      </Table.Head>
-      <Table.Body>
+        </div>
+      </div>
+      <div className={styles.ItemsTable}>
         {items.map((item) => (
-          <Table.Row key={item.id} height={32}>
-            <Table.TextCell>
-              <Pane display="inline-flex" alignItems="center">
-                <Pill color="blue" marginRight={majorScale(1)}>
+          <div key={item.id} className={styles.ItemContainer}>
+            <div className={styles.ItemRow}>
+              <div className={styles.ItemQuantity}>
+                <div className={styles.Quantity}>
                   {parseFloat(item.packItem.quantity.toString())}
-                </Pill>
-                {` `}
-                {item.name}
-              </Pane>
-            </Table.TextCell>
-            <Table.TextCell>{item.product_name}</Table.TextCell>
-            <Table.TextCell textAlign="right">
-              {item.packItem.worn && <Badge color="yellow">worn</Badge>}
-            </Table.TextCell>
-            <Table.TextCell textAlign="right">
-              {item.weight} {item.weight_unit}
-            </Table.TextCell>
-          </Table.Row>
+                </div>
+              </div>
+              <div className={styles.ItemName}>
+                {item.product_url ? (
+                  <a href={item.product_url} target="_blank" rel="noreferrer">
+                    {item.name}
+                  </a>
+                ) : (
+                  item.name
+                )}
+              </div>
+              <div className={styles.ItemDescription}>{item.product_name}</div>
+              <div className={styles.ItemPrice}>
+                {item.price &&
+                  item.price !== "0.00" &&
+                  `$${parseFloat(item.price).toLocaleString()}`}
+              </div>
+              <div className={styles.ItemWorn}>
+                {item.packItem.worn && <div className={styles.Badge}>WORN</div>}
+              </div>
+              <div className={styles.ItemWeight}>
+                {item.weight} {item.weight_unit}
+              </div>
+            </div>
+            {!!item.packItem.notes && <p>{item.packItem.notes}</p>}
+          </div>
         ))}
-      </Table.Body>
-    </Table>
+      </div>
+    </div>
   );
 };

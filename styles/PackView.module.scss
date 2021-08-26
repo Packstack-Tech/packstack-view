@@ -1,0 +1,19 @@
+.PageContainer {
+  display: flex;
+
+  @media screen and (max-width: 860px) {
+    flex-direction: column;
+  }
+}
+
+.Sidebar {
+  width: 320px;
+  box-shadow: -1px 0 0 #f4f5f9;
+  min-height: 100vh;
+
+  @media screen and (max-width: 860px) {
+    width: 100%;
+    box-shadow: none;
+    min-height: auto;
+  }
+}
