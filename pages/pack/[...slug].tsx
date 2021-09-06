@@ -67,18 +67,22 @@ function PackView({ pack, categories }: PackData) {
       </Head>
       <Pane className={styles.PageContainer}>
         <Pane flex={1}>
-          <Pane
-            paddingY={majorScale(2)}
-            paddingX={majorScale(4)}
-            boxShadow={`0 1px 0 ${theme.colors.gray100}`}
-          >
+          <Pane className={styles.Header}>
             <Pane width={112}>
               <a href="https://packstack.io">
                 <Image src={Logo} alt="Packstack logo" unoptimized />
               </a>
             </Pane>
+            <a
+              className={styles.SignUpBanner}
+              href="https://app.packstack.io/register"
+              rel="noreferrer"
+              target="_blank"
+            >
+              Sign Up
+            </a>
           </Pane>
-          <Pane paddingY={majorScale(2)} paddingX={majorScale(4)}>
+          <Pane className={styles.ContentContainer}>
             <Heading size={800} is="h1">
               {pack.title}
             </Heading>
@@ -111,19 +115,21 @@ function PackView({ pack, categories }: PackData) {
             </Pane>
             <Pane>
               {categoryItems.map((category) => (
-                <CategoryTable key={category.id} data={category} compact={compact} />
+                <CategoryTable
+                  key={category.id}
+                  data={category}
+                  compact={compact}
+                />
               ))}
             </Pane>
           </Pane>
         </Pane>
         <Pane className={styles.Sidebar}>
-          <Pane padding={majorScale(4)}>
-            <Sidebar
-              pack={pack}
-              categoryStats={categoryStats}
-              systemUnit={unit}
-            />
-          </Pane>
+          <Sidebar
+            pack={pack}
+            categoryStats={categoryStats}
+            systemUnit={unit}
+          />
         </Pane>
       </Pane>
     </>

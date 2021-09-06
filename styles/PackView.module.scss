@@ -6,14 +6,56 @@
   }
 }
 
+.Header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  box-shadow: 0 1px 0 #f4f5f9;
+  margin: auto;
+  max-width: 1200px;
+
+  @media screen and (max-width: 860px) {
+    padding: 16px 8px;
+  }
+}
+
+.SignUpBanner {
+  display: inline-block;
+  color: #78ca7f;
+  border: 1px dashed;
+  border-radius: 4px;
+  background-color: #f3faf6;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  transition: .2s color;
+
+  &:hover {
+    color:#4cb655;
+  }
+}
+
+.ContentContainer {
+  padding: 16px 24px;
+  margin: auto;
+  max-width: 1200px;
+
+  @media screen and (max-width: 860px) {
+    padding: 16px 8px;
+  }
+}
+
 .Sidebar {
   width: 320px;
   box-shadow: -1px 0 0 #f4f5f9;
   min-height: 100vh;
+  padding: 24px;
 
   @media screen and (max-width: 860px) {
     width: 100%;
     box-shadow: none;
     min-height: auto;
+    padding: 8px;
   }
 }
