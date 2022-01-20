@@ -9,7 +9,7 @@ type Props = {
 
 export const CategoryTable: FC<Props> = ({ data, compact }) => {
   const { category, items } = data;
-
+  
   return (
     <div className={styles.CategoryTable}>
       <div className={styles.CategoryHeader}>
@@ -39,6 +39,7 @@ export const CategoryTable: FC<Props> = ({ data, compact }) => {
                   item.name
                 )}
               </div>
+              <div className={styles.ItemManufacturer}>{item.manufacturer}</div>
               <div className={styles.ItemDescription}>{item.product_name}</div>
               <div className={styles.ItemPrice}>
                 {item.price &&
