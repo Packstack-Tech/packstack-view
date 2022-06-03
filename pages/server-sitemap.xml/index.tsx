@@ -11,7 +11,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const data = await urls.json();
 
   const fields = data.map(({ loc, lastmod }: Url) => ({
-    loc: `https://packstack.io/pack/${loc}`,
+    loc: `https://archive.packstack.io/pack/${loc}`,
     lastmod,
     changefreq: "weekly",
     priority: 0.6,
