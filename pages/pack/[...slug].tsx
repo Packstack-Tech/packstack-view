@@ -75,7 +75,7 @@ function PackView({ pack, categories }: PackData) {
             </Pane>
             <a
               className={styles.SignUpBanner}
-              href="https://app.packstack.io/register"
+              href="https://packstack.io/register"
               rel="noreferrer"
               target="_blank"
             >

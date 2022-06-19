@@ -25,11 +25,11 @@ export default function Home() {
                 <Image src={Logo} alt="Packstack logo" unoptimized />
               </div>
               <div className={styles.BtnGroup}>
-                <a href="https://app.packstack.io" className={styles.Button}>
+                <a href="https://packstack.io" className={styles.Button}>
                   Login
                 </a>
                 <a
-                  href="https://app.packstack.io/register"
+                  href="https://packstack.io/register"
                   className={`${styles.Button} ${styles.BtnOutline}`}
                 >
                   Sign Up
@@ -126,7 +126,7 @@ export default function Home() {
                   Login
                 </a>
                 <a
-                  href="https://app.packstack.io/register"
+                  href="https://packstack.io/register"
                   className={`${styles.Button} ${styles.BtnOutline}`}
                 >
                   Sign Up

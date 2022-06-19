@@ -4,13 +4,19 @@ module.exports = {
     return [
       {
         source: '/register',
-        destination: 'https://app.packstack.io/register',
+        destination: 'https://packstack.io/register',
         permanent: true,
         basePath: false
       },
       {
         source: '/login',
-        destination: 'https://app.packstack.io',
+        destination: 'https://packstack.io/login',
+        permanent: true,
+        basePath: false
+      },
+      {
+        source: '/',
+        destination: 'https://packstack.io',
         permanent: true,
         basePath: false
       },
