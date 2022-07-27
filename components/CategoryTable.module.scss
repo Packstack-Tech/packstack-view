@@ -82,15 +82,19 @@
 
 .ItemName {
   font-weight: 700;
-  width: 25%;
+  width: 15%;
 
   a {
     text-decoration: underline;
   }
 }
 
+.ItemManufacturer {
+  width: 13%;
+}
+
 .ItemDescription {
-  width: 42%;
+  width: 33%;
 }
 
 .ItemPrice {
@@ -99,7 +103,7 @@
 }
 
 .ItemWorn {
-  width: 42px;
+  width: 30px;
   text-align: right;
 }
 
